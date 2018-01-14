@@ -11,7 +11,7 @@ var LinkedList = function() {
       list.head = newNode;
     }
 
-    if(list.head){
+    if(list.tail){
       list.tail.next = newNode;
     }
 
@@ -27,6 +27,16 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
+    var node = list.head;
+
+    while(node){
+      if(node.value === target){
+        return true;
+      }
+      node = node.next;
+    }
+
+    return false;
   };
 
   return list;
