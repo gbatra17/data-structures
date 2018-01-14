@@ -2,7 +2,8 @@ describe('tree', function() {
   var tree;
 
   beforeEach(function() {
-    tree = Tree();
+    //tree is a constructor and should begin with a new keyword
+    tree = new Tree();
   });
 
   it('should have methods named "addChild" and "contains", and a property named "value"', function() {
