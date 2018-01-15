@@ -1,9 +1,15 @@
+function extend(obj1, obj2){
+  for(var key in obj2){
+    obj1[key] = obj2[key];
+  }
+}
+
 var Tree = function(value) {
   var newTree = {};
   newTree.parent = null;
   newTree.value = value;
   newTree.children = [];
-  _.extend(newTree, treeMethods);
+  extend(newTree, treeMethods);
 
   return newTree;
 };
@@ -12,7 +18,9 @@ var treeMethods = {};
 
 treeMethods.addChild = function(value) {
   var newChild = new Tree(value);
+  newChild.parent = this;
   this.children.push(newChild);
+  return newChild;
 };
 
 treeMethods.contains = function(target) {
@@ -32,8 +40,13 @@ treeMethods.contains = function(target) {
   return false;
 };
 
-
-
-/*
- * Complexity: What is the time complexity of the above functions?
- */
+treeMethods.removeFromParent = function(){
+  //first find the child value then splice it out from the parents array
+  var parent = this.parent;
+  for(var i = 0; i < parent.children.length; i++){
+    if(parent.children[i].value === this.value){
+      parent.children.splice(i, 1);
+    }
+  }
+  this.parent = null;
+}
