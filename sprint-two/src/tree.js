@@ -50,3 +50,11 @@ treeMethods.removeFromParent = function(){
   }
   this.parent = null;
 }
+
+treeMethods.traverse = function(callback){
+  this.value = callback(this.value);
+  for(var i = 0; i < this.children.length; i++){
+    var child = this.children[i];
+    child.traverse(callback);
+  }
+}
