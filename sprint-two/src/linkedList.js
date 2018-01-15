@@ -4,6 +4,7 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
+    //big-o = constant
     var newNode = new Node(value);
 
     //if there is no head
@@ -19,6 +20,7 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
+    //big-0 = constant
     var oldHead = list.head.value;
 
     list.head = list.head.next;
@@ -27,6 +29,7 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
+    //big-o = linear
     var node = list.head;
 
     while(node){
