@@ -24,12 +24,32 @@ BinarySearchTree.prototype.insert = function(value){
   }
 }
 
-BinarySearchTree.prototype.contains = function(){
+BinarySearchTree.prototype.contains = function(value){
+  if(this.value === value){
+    return true;
+  }
 
+  if(value > this.value && this.right){
+    return this.right.contains(value);
+  }
+
+  if(value < this.value && this.left){
+    return this.left.contains(value);
+  }
+
+  return false;
 }
 
-BinarySearchTree.prototype.depthFirstLog = function(){
+BinarySearchTree.prototype.depthFirstLog = function(cb){
+  cb(this.value);
 
+  if(this.left){
+    this.left.depthFirstLog(cb);
+  }
+
+  if(this.right){
+    this.right.depthFirstLog(cb);
+  }
 }
 
 /*
